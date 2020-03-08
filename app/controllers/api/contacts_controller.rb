@@ -13,7 +13,7 @@ class Api::ContactsController < ApplicationController
       phone_number: params["phone_number"],
     })
     @contact.save
-    render "create.json.jb"
+    render "show.json.jb"
   end
 
   def show
@@ -28,7 +28,7 @@ class Api::ContactsController < ApplicationController
     @contact.email = params["email"] || @contact.email
     @contact.phone_number = params["phone_number"] || @contact.phone_number
     @contact.save
-    render "update.json.jb"
+    render "show.json.jb"
   end
 
   def destroy
