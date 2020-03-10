@@ -14,8 +14,11 @@ class Api::ContactsController < ApplicationController
       bio: params["bio"],
       middle_name: params["middle_name"],
     })
-    @contact.save
-    render "show.json.jb"
+    if @contact.save
+      render "show.json.jb"
+    else
+      render json: { errors: @contact.errors.full_messages }, status: 422
+    end
   end
 
   def show
@@ -31,8 +34,11 @@ class Api::ContactsController < ApplicationController
     @contact.phone_number = params["phone_number"] || @contact.phone_number
     @contact.bio = params["bio"] || @contact.bio
     @contact.middle_name = params["middle_name"] || @contact.middle_name
-    @contact.save
-    render "show.json.jb"
+    if @contact.save
+      render "show.json.jb"
+    else
+      render json: { errors: @contact.errors.full_messages }, status: 422
+    end
   end
 
   def destroy
