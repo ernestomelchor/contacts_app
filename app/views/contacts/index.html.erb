@@ -1,0 +1,11 @@
+<h1> Welcome to the Contacts App!</h1>
+
+<h2> <% @contacts.each do |contact| %> </h2>
+<div>
+  <p>Contact Name: <%= contact.full_name %> </p>
+  <p>Bio: <%= contact.bio %> </p>
+  <a href="/contacts/<%= contact.id %>">More info</a>
+  <hr>
+</div>
+
+<%end%>

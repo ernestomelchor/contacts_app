@@ -1,0 +1,29 @@
+<% if @contact.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+    <ul>
+    <% @contact.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <h1>Contact Name: <%= @contact.full_name %> </h1>
+  <p>Bio: <%= @contact.bio %> </p>
+  <p>E-Mail: <%= @contact.email %> </p>
+  <p>Phone Number: <%= @contact.phone_number %> </p>
+  <p>Last Updated: <%= @contact.friendly_updated_at %> </p>
+  <hr>
+  <a href="/contacts/<%= @contact.id %>/edit">Edit this contact</a> 
+  <br>
+
+<form method="post" action="/contacts/<%= @contact.id %>">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Destroy this contact">
+</form> 
+
+  <br>
+  <a href="/contacts">Back to all contacts</a> 
+  <br>
+</div>
